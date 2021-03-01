@@ -1,0 +1,38 @@
+server:
+  port: 8001
+
+# spring的配置
+# org.gjt.mm.mysql.Driver
+# com.mysql.cj.jdbc.Driver
+spring:
+  application:
+    name: springcloud-config-dept-8001
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource # 数据源
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/cloud_db01?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: 12345678
+
+# mybatis配置，如果在application.yml中配置了mybatis，就不要有mybatis-config.xml了，否则启动报错（https://blog.csdn.net/asd1098626303/article/details/79109586）
+mybatis:
+  type-aliases-package: com.ly.pojo
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: true # 开启二级缓存
+
+
+## Eureka的配置，服务注册到哪里
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://eureka7001.com:7001/eureka/
+#  instance:
+#    instance-id: springcloud-provider-dept8001 # 修改eureka上的默认描述信息！
+#    prefer-ip-address: true  # true,可以显示服务的IP地址 ~
+#
+## info配置
+#info:
+#  app.name: kuangshen-springcloud
+#  company.name: blog.kuangstudy.com
