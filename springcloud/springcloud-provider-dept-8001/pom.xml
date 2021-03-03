@@ -28,11 +28,12 @@
 <!--        </dependency>-->
 <!--        &lt;!&ndash;EUREKA&ndash;&gt;-->
 <!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-eureka &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-eureka</artifactId>-->
-<!--            <version>1.4.6.RELEASE</version>-->
-<!--        </dependency>-->
+        <!-- spring-cloud-starter-eureka -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-eureka</artifactId>
+            <version>1.4.7.RELEASE</version>
+        </dependency>
         <!--actuator完善监控信息-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
