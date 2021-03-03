@@ -4,10 +4,16 @@ server:
 # Eureka注册中心配置 访问地址：http://${eureka.instance.hostname}:${server.port}/
 eureka:
   instance:
-    hostname: localhost         # Eureka服务端的实例名称
+    hostname: discovery01         # Eureka服务端的实例名称
   client:
     register-with-eureka: false # 表示是否向eureka注册中心注册自己
     fetch-registry: false       # 如果为false，表示自己为注册中心
     service-url:                # 注册地址
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/              # 单机
-#      defaultZone: http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/  # 集群（关联）
+#      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/              # 单机
+      defaultZone: http://discovery02:7002/eureka/,http://discovery03:7003/eureka/  # 集群（关联）
+
+
+
+# 注意：（需要配置 hosts）
+# 搭建集群的时候，不能全部都是一个hostname，但是我们可以伪造，欺骗下eureka，保证单机搭建集群
+# sudo vi /etc/hosts 将discovery01 discovery02 discovery03 都对应为 127.0.0.1

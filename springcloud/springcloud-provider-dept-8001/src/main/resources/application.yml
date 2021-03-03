@@ -23,11 +23,11 @@ mybatis:
     cache-enabled: true # 开启二级缓存
 
 
-# Eureka的配置，服务注册到哪里
+# Eureka的配置，服务注册到哪里 http://discovery01:7001/eureka/,http://discovery02:7002/eureka/,http://discovery03:7003/eureka/
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:7001/eureka/
+      defaultZone: http://discovery01:7001/eureka/,http://discovery02:7002/eureka/,http://discovery03:7003/eureka/
   instance:
     instance-id: springcloud-provider-dept-8001-liyang  # 修改eureka上的默认描述信息！
     prefer-ip-address: true                             # true，可以显示服务的IP地址

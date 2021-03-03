@@ -16,17 +16,19 @@ public class DeptController {
 
     private static Logger logger = LoggerFactory.getLogger("DeptController");
 
+    @Autowired
+    private DeptService deptService;
+
+    // 获取一些配置的信息，得到具体的微服务！
+    @Autowired
+    private DiscoveryClient client;
+
     @GetMapping("/")
     public String hello() {
         logger.info("hello, it's ok!");
         System.out.println("hello, it's ok!");
         return "hello, it's ok!";
     }
-
-    @Autowired
-    private DeptService deptService;
-
-
 
     @PostMapping("/dept/add")
     public boolean addDept(@RequestBody Dept dept) { //@RequestBody
@@ -51,19 +53,13 @@ public class DeptController {
     }
 
 
-    // 获取一些配置的信息，得到具体的微服务！
-    @Autowired
-    private DiscoveryClient client;
-
     // 注册进来的微服务~，获取一些消息~
     @GetMapping("/dept/discovery")
     public Object discovery() {
         logger.info("/dept/discovery");
         // 获取微服务列表的清单
-
         List<String> services = client.getServices();
         System.out.println("discovery=>services:" + services);
-
         // 得到一个具体的微服务信息,通过具体的微服务id，applicationName
         List<ServiceInstance> instances = client.getInstances("SPRINGCLOUD-PROVIDER-DEPT-8001");
 
@@ -75,7 +71,6 @@ public class DeptController {
                             instance.getServiceId()
             );
         }
-
         return this.client;
     }
 
