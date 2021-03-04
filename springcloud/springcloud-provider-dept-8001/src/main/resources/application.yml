@@ -6,7 +6,7 @@ server:
 # com.mysql.cj.jdbc.Driver
 spring:
   application:
-    name: springcloud-provider-dept-8001
+    name: springcloud-provider-dept
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource # 数据源
     driver-class-name: com.mysql.cj.jdbc.Driver

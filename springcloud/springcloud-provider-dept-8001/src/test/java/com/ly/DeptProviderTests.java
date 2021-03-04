@@ -21,4 +21,10 @@ public class DeptProviderTests {
         System.out.println(deptService.queryAll());
     }
 
+
+    @Test
+    public void test() {
+
+    }
+
 }

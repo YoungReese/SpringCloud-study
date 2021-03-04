@@ -19,9 +19,9 @@ public class DeptConsumerController {
     @Autowired
     private RestTemplate restTemplate;
 
-    //Ribbon。我们这里的地址，应该是一个变量，通过服务名来访问
-    private static final String REST_URL_PREFIX = "http://localhost:8001";
-//    private static final String REST_URL_PREFIX = "http://SPRINGCLOUD-PROVIDER-DEPT";
+    // 使用Ribbon后，我们这里的地址，应该是一个变量，通过服务名来访问
+//    private static final String REST_URL_PREFIX = "http://localhost:8001";
+    private static final String REST_URL_PREFIX = "http://SPRINGCLOUD-PROVIDER-DEPT";
 
 //    @RequestMapping("/consumer/dept/add")
     @PostMapping("/consumer/dept/add")
