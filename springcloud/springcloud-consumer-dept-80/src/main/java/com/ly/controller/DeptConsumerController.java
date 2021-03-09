@@ -2,6 +2,9 @@ package com.ly.controller;
 
 import com.ly.pojo.Dept;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -17,7 +20,12 @@ public class DeptConsumerController {
      * 总结：RestTemplate提供多种便捷访问远程http服务的方法，简单的restful服务模版
      */
     @Autowired
+    @Qualifier(value = "remoteRestTemplate")
     private RestTemplate restTemplate;
+
+    @Autowired
+    private LoadBalancerClient loadBalancerClient;
+
 
     // 使用Ribbon后，我们这里的地址，应该是一个变量，通过服务名来访问
 //    private static final String REST_URL_PREFIX = "http://localhost:8001";
@@ -38,6 +46,13 @@ public class DeptConsumerController {
     @RequestMapping("/consumer/dept/list")
     public List<Dept> list() {
         return restTemplate.getForObject(REST_URL_PREFIX + "/dept/list", List.class);
+    }
+
+    @GetMapping("/log")
+    public void logUserInstance() {
+        ServiceInstance serviceInstance = loadBalancerClient.choose("springcloud-provider-dept");
+        //打印当前选择的是哪个节点
+        System.out.println(serviceInstance.getServiceId() + serviceInstance.getHost() + serviceInstance.getPort());
     }
 
 

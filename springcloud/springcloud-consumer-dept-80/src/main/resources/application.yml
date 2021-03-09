@@ -6,5 +6,6 @@ server:
 eureka:
   client:
     register-with-eureka: false # 不向Eureka注册自己
+    fetch-registry: true
     service-url:
       defaultZone: http://discovery01:7001/eureka/,http://discovery02:7002/eureka/,http://discovery03:7003/eureka/

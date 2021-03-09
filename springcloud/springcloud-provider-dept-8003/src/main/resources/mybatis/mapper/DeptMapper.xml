@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ly.dao.DeptMapper">
+
+    <insert id="addDept" parameterType="Dept">
+        insert into dept (dept_name, db_source)
+        values (#{deptName},DATABASE())
+    </insert>
+
+    <select id="queryById" resultType="Dept" parameterType="Long">
+        select * from dept where dept_no = #{deptNo};
+    </select>
+
+    <!--在DeptMapper中使用注解替代以下xml语句-->
+<!--    <select id="queryAll" resultType="Dept">-->
+<!--        select * from dept;-->
+<!--    </select>-->
+
+</mapper>

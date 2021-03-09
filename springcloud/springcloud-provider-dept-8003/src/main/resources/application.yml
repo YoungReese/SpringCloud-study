@@ -1,5 +1,5 @@
 server:
-  port: 8001
+  port: 8003
 
 # spring的配置
 # org.gjt.mm.mysql.Driver
@@ -10,7 +10,7 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource # 数据源
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/cloud_db01?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://localhost:3306/cloud_db03?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
     username: root
     password: 12345678
 
@@ -30,7 +30,7 @@ eureka:
       defaultZone: http://discovery01:7001/eureka/,http://discovery02:7002/eureka/,http://discovery03:7003/eureka/
     fetch-registry: true
   instance:
-    instance-id: springcloud-provider-dept-8001-liyang  # 修改eureka上的默认描述信息！
+    instance-id: springcloud-provider-dept-8003-liyang  # 修改eureka上的默认描述信息！
     prefer-ip-address: true                             # true，可以显示服务的IP地址
 
 # info配置
