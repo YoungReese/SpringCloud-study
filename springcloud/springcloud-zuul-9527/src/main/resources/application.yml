@@ -1,0 +1,32 @@
+server:
+  port: 9527
+
+spring:
+  application:
+    name: springcloud-zuul
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://discovery01:7001/eureka/,http://discovery02:7002/eureka/,http://discovery03:7003/eureka/
+    fetch-registry: true
+  instance:
+    instance-id: springcloud-zuul-9527-liyang  # 修改eureka上的默认描述信息！
+    prefer-ip-address: true                    # true，可以显示服务的IP地址
+
+
+# info配置
+info:
+  app.name: springcloud-liyang
+  company.name: github.com
+
+# zuul配置
+# 原先：  http://www.liyang.com:9527/springcloud-provider-dept/dept/get/1
+# 改造后：http://www.liyang.com:9527/liyang/mydept/dept/get/1 （ hosts 中有 127.0.0.1  www.liyang.com）
+zuul:
+  routes:
+    mydept.serviceId: springcloud-provider-dept
+    mydept.path: /mydept/**                        # 将 springcloud-provider-dept 替换为 mydept 实现为服务名隐藏
+  ignored-services: "*"                            # ignored-services："*" 忽略，隐藏全部的
+  prefix: /liyang                                  # 设置公共的前缀，一般可以不加
