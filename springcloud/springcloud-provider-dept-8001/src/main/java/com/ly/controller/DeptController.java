@@ -2,6 +2,7 @@ package com.ly.controller;
 
 import com.ly.pojo.Dept;
 import com.ly.service.DeptService;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,12 +32,13 @@ public class DeptController {
     }
 
     @PostMapping("/dept/add")
-    public boolean addDept(@RequestBody Dept dept) { //@RequestBody
+    public boolean addDept(@RequestBody Dept dept) { // @RequestBody
         System.out.println("/dept/add");
         return deptService.addDept(dept);
     }
 
     @GetMapping("/dept/get/{id}")
+    @HystrixCommand                                  // 用于测试dashboard
     public Dept get(@PathVariable("id") Long id) {
         Dept dept = deptService.queryById(id);
         if (dept == null) {

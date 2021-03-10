@@ -1,0 +1,3 @@
+# dashboard监控页面端口
+server:
+  port: 9001
