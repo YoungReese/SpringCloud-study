@@ -10,3 +10,6 @@
 *   编写配置文件
 *   开启这个功能 @EnableXXXXX
 *   配置类
+
+### 备注
+config相关模块需要连接git，文件信息在 springcloud-config 中
