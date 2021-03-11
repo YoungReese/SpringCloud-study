@@ -13,3 +13,6 @@
 
 ### 备注
 config相关模块需要连接git，文件信息在 springcloud-config 中
+
+### 参考资料
+[狂神说SpringCloud学习笔记](https://blog.csdn.net/weixin_43591980/article/details/106255122)
