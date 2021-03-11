@@ -9,17 +9,15 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>springcloud-provider-dept-8001</artifactId>
-
+    <artifactId>springcloud-config-provider-dept-8001</artifactId>
 
     <dependencies>
         <!--config-->
-        <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-config -->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-config</artifactId>-->
-<!--            <version>2.1.1.RELEASE</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
+            <version>2.1.4.RELEASE</version>
+        </dependency>
 
         <!-- spring-cloud-starter-hystrix -->
         <dependency>
@@ -97,6 +95,5 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
 
 </project>
